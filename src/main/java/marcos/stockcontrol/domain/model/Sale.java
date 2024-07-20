@@ -5,8 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity(name = "tb_acquisition")
-public class Acquisition extends Shift {
+@Entity(name = "tb_sale")
+public class Sale extends Shift{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,4 +19,6 @@ public class Acquisition extends Shift {
     public void setId(Long id) {
         this.id = id;
     }
+
+
 }

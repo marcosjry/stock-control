@@ -1,4 +1,8 @@
 package marcos.stockcontrol.domain.model;
 
-public class Client {
+import jakarta.persistence.Entity;
+
+@Entity(name = "tb_client")
+public class Client extends Account{
+
 }
