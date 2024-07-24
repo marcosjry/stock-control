@@ -1,7 +1,6 @@
 package marcos.stockcontrol.domain.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 import java.util.List;
@@ -10,17 +9,15 @@ import java.util.List;
 public class Supplier extends Account{
 
     @OneToMany
-    private List<Product> productList;
+    private List<Sale> sale;
 
-
-    public List<Product> getProductList() {
-        return productList;
+    public List<Sale> getSale() {
+        return sale;
     }
 
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
+    public void setSale(List<Sale> sale) {
+        this.sale = sale;
     }
-
 
 
 }

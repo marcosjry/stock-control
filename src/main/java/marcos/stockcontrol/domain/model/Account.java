@@ -3,7 +3,7 @@ package marcos.stockcontrol.domain.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
+
 
 @MappedSuperclass
 public class Account {

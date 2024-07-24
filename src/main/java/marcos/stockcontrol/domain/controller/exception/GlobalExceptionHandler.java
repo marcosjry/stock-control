@@ -21,4 +21,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(elementException.getMessage(), HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
+    @ExceptionHandler(ProductException.class)
+    public ResponseEntity<String> handleResourceProductException(ProductException exception) {
+        return new ResponseEntity<>("Product Quantity is out of range.", HttpStatus.NOT_FOUND);
+    }
 }

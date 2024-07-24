@@ -1,5 +1,6 @@
 package marcos.stockcontrol.domain.controller;
 
+import marcos.stockcontrol.domain.model.Acquisition;
 import marcos.stockcontrol.domain.model.Client;
 import marcos.stockcontrol.domain.service.ClientService;
 import org.springframework.context.annotation.Primary;
@@ -43,5 +44,6 @@ public class ClientController {
         return ResponseEntity.created(location).body(toCreate);
 
     }
+
 
 }

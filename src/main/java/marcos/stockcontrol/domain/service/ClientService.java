@@ -11,4 +11,6 @@ public interface ClientService {
     List<Client> showClient();
 
     Client create(Client clientToCreate);
+
+    Client update(Client clientToUpdate);
 }

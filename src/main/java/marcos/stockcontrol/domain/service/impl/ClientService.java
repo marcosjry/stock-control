@@ -1,23 +1,25 @@
 package marcos.stockcontrol.domain.service.impl;
 
+import marcos.stockcontrol.domain.model.Acquisition;
 import marcos.stockcontrol.domain.model.Client;
 import marcos.stockcontrol.domain.repository.ClientRepository;
-import marcos.stockcontrol.domain.service.ClientService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
-public class ClientServiceImpl implements ClientService {
+public class ClientService implements marcos.stockcontrol.domain.service.ClientService {
 
     private final ClientRepository clientRepository;
 
-    public ClientServiceImpl(ClientRepository clientRepository) {
+    public ClientService(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
     }
+
+
 
     @Override
     public Client findById(Long id) {
@@ -39,8 +41,16 @@ public class ClientServiceImpl implements ClientService {
             throw new IllegalArgumentException("This Client already exists on our System.");
 
         }
-        var date = LocalDateTime.now();
-        clientToCreate.setDate(date);
+        clientToCreate.setDate(LocalDateTime.now());
+        List<Acquisition> acquisitionsList = new ArrayList<>();
+        clientToCreate.setAcquisitions(acquisitionsList);
         return clientRepository.save(clientToCreate);
     }
+
+    @Override
+    public Client update(Client clientToUpdate) {
+        return clientRepository.save(clientToUpdate);
+    }
+
+
 }
