@@ -14,5 +14,7 @@ public interface ProductService {
 
     Product create(Product productToCreate);
 
+    Boolean searchByName(String name);
+
     List<Product> productList();
 }

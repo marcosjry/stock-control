@@ -18,12 +18,12 @@ public class Acquisition {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long clientId;
+    private Long supplierId;
     private Boolean status;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "acquisition_id")
-    private List<PurchasedProduct> products;
+    private List<RegisterProduct> products;
 
     private BigDecimal amount;
 
@@ -36,14 +36,13 @@ public class Acquisition {
 
     public void setQuantity() {
         this.quantity = this.products.stream()
-                .mapToLong(PurchasedProduct::getQuantity)
+                .mapToLong(RegisterProduct::getQuantity)
                 .sum();
     }
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
-
 
     private LocalDateTime date;
 
@@ -57,8 +56,8 @@ public class Acquisition {
 
     public void setAmount() {
         this.amount = this.products.stream()
-                .map(purchasedProduct -> purchasedProduct.getPrice()
-                        .multiply(BigDecimal.valueOf(purchasedProduct.getQuantity())))
+                .map(registerProduct -> registerProduct.getPrice()
+                        .multiply(BigDecimal.valueOf(registerProduct.getQuantity())))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
@@ -74,17 +73,15 @@ public class Acquisition {
         return amount;
     }
 
-
-
-    public List<PurchasedProduct> getProducts() {
+    public List<RegisterProduct> getProducts() {
         return products;
     }
 
-    public void setProducts(List<PurchasedProduct> products) {
+    public void setProducts(List<RegisterProduct> products) {
         this.products = products;
     }
 
-    public void addProduct(PurchasedProduct product) {
+    public void addProduct(RegisterProduct product) {
         this.products.add(product);
     }
 
@@ -96,11 +93,11 @@ public class Acquisition {
         this.status = status;
     }
 
-    public Long getClientId() {
-        return clientId;
+    public Long getSupplierId() {
+        return supplierId;
     }
 
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
+    public void setSupplierId(Long supplierId) {
+        this.supplierId = supplierId;
     }
 }

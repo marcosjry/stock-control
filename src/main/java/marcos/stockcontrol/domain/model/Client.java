@@ -9,22 +9,22 @@ import java.util.List;
 public class Client extends Account{
 
     @OneToMany
-    private List<Acquisition> acquisitions;
+    private List<Sale> saleList;
 
     public Client() {
-        this.acquisitions = new ArrayList<>();
+        this.saleList = new ArrayList<>();
     }
 
-    public List<Acquisition> getAcquisitions() {
-        return acquisitions;
+    public List<Sale> getSaleList() {
+        return saleList;
     }
 
-    public void setAcquisitions(List<Acquisition> acquisitions) {
-        this.acquisitions = acquisitions;
+    public void setSaleList(List<Sale> saleList) {
+        this.saleList = saleList;
     }
 
-    public void addAcquisition(Acquisition acquisition) {
-        this.acquisitions.add(acquisition);
+    public void addSale(Sale acquisition) {
+        this.saleList.add(acquisition);
     }
 
 }

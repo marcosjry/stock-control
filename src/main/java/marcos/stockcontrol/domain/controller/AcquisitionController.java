@@ -30,7 +30,7 @@ public class AcquisitionController {
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(toCreate.getClientId())
+                .buildAndExpand(toCreate.getSupplierId())
                 .toUri();
         return ResponseEntity.created(location).body(toCreate);
     }

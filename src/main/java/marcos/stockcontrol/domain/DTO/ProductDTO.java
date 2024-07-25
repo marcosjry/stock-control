@@ -1,8 +1,7 @@
 package marcos.stockcontrol.domain.DTO;
 
 import marcos.stockcontrol.domain.model.Product;
-import marcos.stockcontrol.domain.model.PurchasedProduct;
-import org.springframework.cglib.core.Local;
+import marcos.stockcontrol.domain.model.RegisterProduct;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -48,9 +47,9 @@ public class ProductDTO {
         return product;
     }
 
-    public PurchasedProduct dtoToPurchased() {
-        PurchasedProduct product = new PurchasedProduct();
-        product.setId(this.id);
+    public RegisterProduct dtoToPurchased() {
+
+        RegisterProduct product = new RegisterProduct();
         product.setName(this.name);
         product.setDescription(this.description);
         product.setPrice(this.price);

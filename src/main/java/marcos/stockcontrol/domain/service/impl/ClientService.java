@@ -42,8 +42,6 @@ public class ClientService implements marcos.stockcontrol.domain.service.ClientS
 
         }
         clientToCreate.setDate(LocalDateTime.now());
-        List<Acquisition> acquisitionsList = new ArrayList<>();
-        clientToCreate.setAcquisitions(acquisitionsList);
         return clientRepository.save(clientToCreate);
     }
 

@@ -11,7 +11,7 @@ import java.util.List;
 public class Sale {
 
     public Sale() {
-        this.sales = new ArrayList<>();
+        this.products = new ArrayList<>();
     }
 
     @Id
@@ -21,8 +21,9 @@ public class Sale {
     private Long clientId;
     private Boolean status;
 
-    @OneToMany
-    private List<Product> sales;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "sale_id")
+    private List<RegisterProduct> products;
 
     private BigDecimal amount;
 
@@ -33,12 +34,31 @@ public class Sale {
         return quantity;
     }
 
+    public Long getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
+    }
+
     public void setQuantity() {
-        this.quantity = this.sales.stream()
-                .mapToLong(Product::getQuantity)
+        this.quantity = this.products.stream()
+                .mapToLong(RegisterProduct::getQuantity)
                 .sum();
     }
 
+    public List<RegisterProduct> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<RegisterProduct> products) {
+        this.products = products;
+    }
+
+    public void addProduct(RegisterProduct product) {
+        this.products.add(product);
+    }
 
     private LocalDateTime date;
 
@@ -51,7 +71,7 @@ public class Sale {
     }
 
     public void setAmount() {
-        this.amount = this.sales.stream()
+        this.amount = this.products.stream()
                 .map(product -> product.getPrice()
                         .multiply(BigDecimal.valueOf(product.getQuantity())))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);

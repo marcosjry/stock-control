@@ -23,6 +23,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ProductException.class)
     public ResponseEntity<String> handleResourceProductException(ProductException exception) {
-        return new ResponseEntity<>("Product Quantity is out of range.", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(SaleException.class)
+    public ResponseEntity<String> handleSaleException(SaleException exception) {
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
     }
 }

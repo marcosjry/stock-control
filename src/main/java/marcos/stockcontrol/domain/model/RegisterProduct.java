@@ -1,20 +1,21 @@
 package marcos.stockcontrol.domain.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
 @Entity(name = "tb_purchased_product")
-public class PurchasedProduct {
+public class RegisterProduct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long productId;
+
+    @ManyToOne
+    @JoinColumn(name = "acquisition_id", insertable = false, updatable = false)
+    private Acquisition acquisition;
+
     private String name;
     private String description;
     private Long quantity;
@@ -53,13 +54,6 @@ public class PurchasedProduct {
         this.name = name;
     }
 
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
 
     public Long getId() {
         return id;
