@@ -52,3 +52,5 @@ classDiagram
     Venda --> Cliente : feita para
     Venda --> Produto : contém
 ```
+
+Projeto em desenvolvimento, tentando praticar conceitos de controller, service, model, domain e DTO.
